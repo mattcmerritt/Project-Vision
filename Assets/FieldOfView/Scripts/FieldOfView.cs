@@ -19,8 +19,8 @@ public class FieldOfView : MonoBehaviour {
 
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
-    private float fov;
-    private float viewDistance;
+    [SerializeField]
+    private float fov, viewDistance;
     private Vector3 origin;
     private float startingAngle;
 
@@ -33,7 +33,7 @@ public class FieldOfView : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        int rayCount = 50;
+        int rayCount = 360;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
 

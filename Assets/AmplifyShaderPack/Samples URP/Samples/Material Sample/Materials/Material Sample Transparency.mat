@@ -9,7 +9,10 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Material Sample Transparency
   m_Shader: {fileID: 4800000, guid: 79bb1ec08594440aae8b021eddf58b59, type: 3}
-  m_ValidKeywords: []
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -18,6 +21,7 @@ Material:
   stringTagMap:
     MotionVector: User
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -155,12 +159,12 @@ Material:
     - _OcclusionStrength: 1
     - _Op: 1
     - _Opa: 1
-    - _Opacity: 0.26
+    - _Opacity: 0.006
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RenderQueueType: 4
