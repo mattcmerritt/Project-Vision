@@ -18,17 +18,15 @@ public class FieldOfView : MonoBehaviour {
 
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
-    private float fov;
-    private float viewDistance;
+    [SerializeField]
+    private float fov, viewDistance;
     private Vector3 origin;
     private float startingAngle;
 
     private void Start() {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fov = 90f;
-        viewDistance = 50f;
-        origin = Vector3.zero;
+        origin = transform.parent.position;
     }
 
     private void LateUpdate() {
@@ -73,10 +71,6 @@ public class FieldOfView : MonoBehaviour {
         mesh.uv = uv;
         mesh.triangles = triangles;
         mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
-    }
-
-    public void SetOrigin(Vector3 origin) {
-        this.origin = origin;
     }
 
     public void SetAimDirection(Vector3 aimDirection) {
