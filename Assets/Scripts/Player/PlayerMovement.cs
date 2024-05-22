@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private int index;
     [SerializeField] private float speed;
 
     public void Move(InputAction.CallbackContext context)
@@ -24,5 +25,10 @@ public class PlayerMovement : MonoBehaviour
             // Debug.Log("canceled");
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
+    }
+
+    public int GetIndex()
+    {
+        return index;
     }
 }
