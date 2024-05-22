@@ -12,7 +12,7 @@ public class Waypoint : MonoBehaviour
     [SerializeField] private EventObject triggerObject;
 
     // The object's true world position
-    [SerializeField] private Vector3 trueLocation;
+    private Vector3 trueLocation;
     public Vector3 TrueLocation
     {
         get { return this.trueLocation; }
@@ -21,6 +21,8 @@ public class Waypoint : MonoBehaviour
 
     private void Start()
     {
+        parent = GetComponentInParent<Enemy>();
+
         TrueLocation = transform.position;
 
         if (triggerObject)
