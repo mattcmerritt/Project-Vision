@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public PlayerMovement movement;
 
     public void Start() 
+    {
+        DontDestroyOnLoad(gameObject);
+        AttachPlayer();
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AttachPlayer();
+    }
+
+    public void AttachPlayer()
     {
         PlayerMovement[] players = FindObjectsOfType<PlayerMovement>();
         int index = GetComponent<PlayerInput>().playerIndex;
@@ -25,6 +37,10 @@ public class PlayerController : MonoBehaviour
         if (movement != null)
         {
             movement.Move(context);
+        }
+        else
+        {
+            AttachPlayer(); // failsafe if player not attached yet
         }
     }
 }
