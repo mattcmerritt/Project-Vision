@@ -8,8 +8,6 @@ public class ProximityEvent : EventObject
     {
         Collider2D[] overlappingColliders = Physics2D.OverlapCircleAll(transform.position, 1);
 
-        Debug.Log(overlappingColliders);
-
         bool collisionDetected = false;
         foreach (Collider2D collider in overlappingColliders)
         {

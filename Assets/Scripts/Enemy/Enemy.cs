@@ -13,12 +13,16 @@ public class Enemy : MonoBehaviour
     private Coroutine movementCoroutine;
 
     // vision cone details
-    [SerializeField] private GameObject visionCone;
+    [SerializeField] private GameObject visionConeObject;
     private float viewDistance = 5;
+
+    // room details
+    private Room currentRoom;
 
     // detecting in front of the player
     private void Update()
     {
+        // scanning in front of the enemies in the vision cone
         Vector2 direction = currentDirection == Direction.LEFT ? Vector2.left : Vector2.right;
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y) + direction * 0.5f, direction, viewDistance);
 
@@ -30,6 +34,15 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // disabling the vision cone graphic if the enemy is not in a visible room
+        if (currentRoom != null)
+        {
+            visionConeObject.SetActive(currentRoom.Visible);
+        }
+        else
+        {
+            visionConeObject.SetActive(false);
+        }
     }
 
     public void SetTargetWaypoint(Waypoint newWaypoint)
@@ -49,12 +62,12 @@ public class Enemy : MonoBehaviour
         if (currentDirection == Direction.LEFT)
         {
             rend.flipX = true;
-            visionCone.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            visionConeObject.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         else
         {
             rend.flipX = false;
-            visionCone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            visionConeObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
 
         // move between positions using coroutine
@@ -81,5 +94,14 @@ public class Enemy : MonoBehaviour
 
         // move the enemy exactly to the end
         transform.position = target;
+    }
+
+    // room detection for lighting purposes
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Room>())
+        {
+            currentRoom = collision.GetComponent<Room>();
+        }
     }
 }
