@@ -6,11 +6,31 @@ public class Enemy : MonoBehaviour
 {
     // motion details
     [SerializeField] private Waypoint currentWaypoint, previousWaypoint;
-    private Direction currentDirection;
+    [SerializeField] private Direction currentDirection;
     private float speed = 5;
 
     // current motion reference
     private Coroutine movementCoroutine;
+
+    // vision cone details
+    [SerializeField] private GameObject visionCone;
+    private float viewDistance = 5;
+
+    // detecting in front of the player
+    private void Update()
+    {
+        Vector2 direction = currentDirection == Direction.LEFT ? Vector2.left : Vector2.right;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y) + direction * 0.5f, direction, viewDistance);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.GetComponent<PlayerMovement>())
+            {
+                GameManager.instance.FailAndRestartLevel();
+            }
+        }
+
+    }
 
     public void SetTargetWaypoint(Waypoint newWaypoint)
     {
@@ -29,10 +49,12 @@ public class Enemy : MonoBehaviour
         if (currentDirection == Direction.LEFT)
         {
             rend.flipX = true;
+            visionCone.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         else
         {
             rend.flipX = false;
+            visionCone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
 
         // move between positions using coroutine
