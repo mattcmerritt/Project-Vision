@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
         {
             // Debug.Log("performed");
             Vector2 direction = context.ReadValue<Vector2>();
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            // GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, GetComponent<Rigidbody2D>().velocity.y);
         }
         else if(context.canceled)
         {
