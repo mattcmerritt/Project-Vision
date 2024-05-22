@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private Waypoint[] waypoints;
-    private Waypoint currentWaypoint;
+    // motion details
+    [SerializeField] private Waypoint currentWaypoint, previousWaypoint;
     private Direction currentDirection;
+    private float speed = 5;
 
-    private void Start()
-    {
-        waypoints = GetComponentsInChildren<Waypoint>();
-    }
+    // current motion reference
+    private Coroutine movementCoroutine;
 
     public void SetTargetWaypoint(Waypoint newWaypoint)
     {
+        // do not allow moving to the same point
+        if (newWaypoint == currentWaypoint) return;
+
+        previousWaypoint = currentWaypoint;
+        currentWaypoint = newWaypoint;
+
         // calculate direction
-        float xDisplacement = newWaypoint.TrueLocation.x - transform.position.x;
+        float xDisplacement = currentWaypoint.TrueLocation.x - previousWaypoint.TrueLocation.x;
         currentDirection = xDisplacement < 0 ? Direction.LEFT : Direction.RIGHT;
 
         // changing the sprite direction to reflect the facing direction
@@ -31,12 +36,19 @@ public class Enemy : MonoBehaviour
         }
 
         // move between positions using coroutine
-        StartCoroutine(MoveToPosition(newWaypoint.TrueLocation, 3));
+        if (movementCoroutine != null)
+        {
+            StopCoroutine(movementCoroutine);
+        }        
+        movementCoroutine = StartCoroutine(MoveToPosition(newWaypoint.TrueLocation));
     }
 
-    private IEnumerator MoveToPosition(Vector3 target, float duration)
+    private IEnumerator MoveToPosition(Vector3 target)
     {
         Vector3 startPosition = transform.position;
+        Vector3 totalDistance = startPosition - target;
+        float duration = totalDistance.magnitude / speed;
+
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
