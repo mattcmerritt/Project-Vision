@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     // room details
     private Room currentRoom;
 
+    // detained player details
+    private HashSet<PlayerMovement> playersDetained = new HashSet<PlayerMovement>();
+
     // detecting in front of the player
     private void Update()
     {
@@ -26,13 +29,34 @@ public class Enemy : MonoBehaviour
         Vector2 direction = currentDirection == Direction.LEFT ? Vector2.left : Vector2.right;
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y) + direction * 0.5f, direction, viewDistance);
 
+        HashSet<PlayerMovement> playersDetainedThisCycle = new HashSet<PlayerMovement>();
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.GetComponent<PlayerMovement>())
             {
-                GameManager.instance.FailAndRestartLevel();
+                // previously would restart the level on being caught
+                // GameManager.instance.FailAndRestartLevel();
+
+                // now, the player is held in place and cannot move
+                playersDetainedThisCycle.Add(hit.collider.GetComponent<PlayerMovement>());
             }
         }
+
+        // detaining all caught players to restrict movement
+        foreach (PlayerMovement player in playersDetainedThisCycle)
+        {
+            player.Detained = true;
+        }
+        // releasing any players from last cycle that were not detained this cycle
+        foreach (PlayerMovement player in playersDetained)
+        {
+            if (!playersDetainedThisCycle.Contains(player))
+            {
+                player.Detained = false;
+            }
+        }
+        // setting the players detained to the players detained at the end of this frame
+        playersDetained = playersDetainedThisCycle;
 
         // disabling the vision cone graphic if the enemy is not in a visible room
         if (currentRoom != null)

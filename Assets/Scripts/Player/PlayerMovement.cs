@@ -18,6 +18,14 @@ public class PlayerMovement : MonoBehaviour
         set { movementLocked = value; }
     }
 
+    // detainment details
+    private bool detained;
+    public bool Detained
+    {
+        get { return detained; }
+        set { detained = value; }
+    }
+
     // storing reference to the last interactable element that the player is close to
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!movementLocked)
+        if (!movementLocked && !detained)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, GetComponent<Rigidbody2D>().velocity.y);
         }
