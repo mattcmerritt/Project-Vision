@@ -18,17 +18,35 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.started)
         {
-            Debug.Log("started");
+            // Debug.Log("started");
         }
         else if(context.performed)
         {
-            Debug.Log("performed");
+            // Debug.Log("performed");
             direction = context.ReadValue<Vector2>();
         }
         else if(context.canceled)
         {
-            Debug.Log("canceled");
+            // Debug.Log("canceled");
             direction = Vector2.zero;
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            // Debug.Log("started");
+            Debug.Log("interact pressed");
+        }
+        else if(context.performed)
+        {
+            // Debug.Log("performed");
+            
+        }
+        else if(context.canceled)
+        {
+            // Debug.Log("canceled");
         }
     }
 

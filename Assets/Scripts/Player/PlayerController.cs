@@ -43,4 +43,16 @@ public class PlayerController : MonoBehaviour
             AttachPlayer(); // failsafe if player not attached yet
         }
     }
+
+    public void TriggerInteract(InputAction.CallbackContext context)
+    {
+        if (movement != null)
+        {
+            movement.Interact(context);
+        }
+        else
+        {
+            AttachPlayer(); // failsafe if player not attached yet
+        }
+    }
 }
