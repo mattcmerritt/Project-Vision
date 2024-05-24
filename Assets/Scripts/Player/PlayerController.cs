@@ -55,4 +55,20 @@ public class PlayerController : MonoBehaviour
             AttachPlayer(); // failsafe if player not attached yet
         }
     }
+
+    public void TriggerPause(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            PauseManager pm = FindObjectOfType<PauseManager>();
+            if(pm == null)
+            {
+                Debug.LogError("ERROR: The pause manager does not exist!");
+            }
+            else if(!pm.CheckIfNotUnpausable())
+            {
+                pm.TogglePause();
+            }
+        }
+    }
 }

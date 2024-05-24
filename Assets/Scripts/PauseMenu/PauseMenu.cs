@@ -9,12 +9,13 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Image P1Panel, P2Panel;
     [SerializeField] private TMP_Text P1ConnectionStatus, P2ConnectionStatus;
+    [SerializeField] private GameObject UnpauseInstructions;
 
     [SerializeField] private Color ConnectedColor, DisconnectedColor;
 
     private PlayerInput P1, P2;
-    
-    public void Awake()
+
+    private void Update()
     {
         PlayerInput[] allPlayers = FindObjectsOfType<PlayerInput>();
         foreach (PlayerInput p in allPlayers)
@@ -29,6 +30,15 @@ public class PauseMenu : MonoBehaviour
                 P2 = p;
                 UpdateP2Connection();
             }
+        }
+
+        if(P1 != null && P2 != null)
+        {
+            UnpauseInstructions.SetActive(true);
+        }
+        else
+        {
+            UnpauseInstructions.SetActive(false);
         }
     }
 
