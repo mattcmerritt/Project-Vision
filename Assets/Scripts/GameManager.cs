@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // components
     [SerializeField] private GameObject failureScreen;
     [SerializeField] private GameObject pauseManagerPrefab;
+
+    // data
+    private PlayerMovement[] players;
 
     public static GameManager instance;
 
@@ -16,6 +20,26 @@ public class GameManager : MonoBehaviour
         if(FindObjectOfType<PauseManager>() == null)
         {
             Instantiate(pauseManagerPrefab);
+        }
+
+        players = FindObjectsOfType<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        bool canContinue = false;
+        foreach (PlayerMovement player in players)
+        {
+            if (!player.Detained)
+            {
+                canContinue = true;
+                break;
+            }
+        }
+
+        if (!canContinue)
+        {
+            FailAndRestartLevel();
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class InteractableElement : MonoBehaviour
 {
-    [SerializeField] private GameObject interactUI;
+    [SerializeField] protected GameObject interactUI;
 
     public abstract void Interact(GameObject player);
 
