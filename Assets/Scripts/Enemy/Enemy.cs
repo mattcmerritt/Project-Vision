@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         HashSet<PlayerMovement> playersDetainedThisCycle = new HashSet<PlayerMovement>();
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider.GetComponent<PlayerMovement>())
+            if (hit.collider.GetComponent<PlayerMovement>() && !hit.collider.GetComponent<PlayerMovement>().Hidden)
             {
                 // previously would restart the level on being caught
                 // GameManager.instance.FailAndRestartLevel();

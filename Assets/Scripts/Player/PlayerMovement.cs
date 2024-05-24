@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
         get { return movementLocked; }
         set { movementLocked = value; }
     }
+    private bool hidden;
+    public bool Hidden
+    {
+        get { return hidden; }
+        set { hidden = value; }
+    }
 
     // detainment details
     private bool detained;
@@ -81,8 +87,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (context.started)
                 {
-                    LockedDoor lockedDoor = (LockedDoor)currentElement;
+                    LockedDoor lockedDoor = (LockedDoor) currentElement;
                     lockedDoor.AttemptUnlock(gameObject);
+                }
+            }
+            if (currentElement is Cover)
+            {
+                if (context.started)
+                {
+                    Cover cover = (Cover) currentElement;
+                    cover.Reveal(gameObject);
                 }
             }
         }
