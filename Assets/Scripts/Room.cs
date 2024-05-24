@@ -15,11 +15,17 @@ public class Room : MonoBehaviour
         private set { this.visible = value; }
     }
 
+    private int playersInRoom = 0;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerMovement>())
         {
-            StartCoroutine(EnableLight());
+            if (playersInRoom == 0)
+            {
+                StartCoroutine(EnableLight());
+            }
+            playersInRoom++;
         }
     }
 
@@ -27,7 +33,11 @@ public class Room : MonoBehaviour
     {
         if (collision.GetComponent<PlayerMovement>())
         {
-            StartCoroutine(DisableLight());
+            playersInRoom--;
+            if (playersInRoom == 0)
+            {
+                StartCoroutine(DisableLight());
+            }
         }
     }
 
