@@ -14,6 +14,15 @@ public class PlayerController : MonoBehaviour
         AttachPlayer();
     }
 
+    public void Update()
+    {
+        if(movement != null)
+        {
+            // second vector is offset so player is lower on screen (y) and camera can actually see scene (z)
+            transform.position = movement.transform.position + new Vector3(0f, 7.5f, -10f);
+        }
+    }
+
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         AttachPlayer();

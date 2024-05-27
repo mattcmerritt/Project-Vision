@@ -751,9 +751,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 7101310048583517780, guid: edba7b2feccfe7441aa185b858a19200, type: 3}
-  m_SplitScreen: 0
+  m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0
-  m_FixedNumberOfSplitScreens: -1
+  m_FixedNumberOfSplitScreens: 2
   m_SplitScreenRect:
     serializedVersion: 2
     x: 0
@@ -878,8 +878,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 2.7498999, y: 0.25, z: 0}
-    m_Extent: {x: 2.2591, y: 0.25, z: 0}
+    m_Center: {x: 2.7517998, y: 0.2521, z: 0}
+    m_Extent: {x: 2.2547, y: 0.2521, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1587,8 +1587,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -8.4959, y: -4.4985, z: 0}
-    m_Extent: {x: 9.2555, y: 5.2509003, z: 0}
+    m_Center: {x: -8.501949, y: -4.5037, z: 0}
+    m_Extent: {x: 9.25675, y: 5.256, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1875,8 +1875,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -8.50365, y: -4.5002, z: 0}
-    m_Extent: {x: 9.25365, y: 5.2568, z: 0}
+    m_Center: {x: -8.50105, y: -4.5043497, z: 0}
+    m_Extent: {x: 9.251349, y: 5.24965, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2301,8 +2301,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.99755, y: -4.5028, z: 0}
-    m_Extent: {x: 8.755851, y: 5.2489004, z: 0}
+    m_Center: {x: 9.0009, y: -4.50235, z: 0}
+    m_Extent: {x: 8.7589, y: 5.24625, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3631,7 +3631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1142194058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,8 +5243,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 9.0049, y: -4.4997997, z: 0}
-    m_Extent: {x: 8.7516, y: 5.2586, z: 0}
+    m_Center: {x: 8.99485, y: -4.4964, z: 0}
+    m_Extent: {x: 8.75445, y: 5.2559004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
