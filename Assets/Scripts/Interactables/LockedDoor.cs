@@ -17,7 +17,7 @@ public class LockedDoor : InteractableElement
         endHandleTransform.rotation = Quaternion.Euler(0, 0, -durationLocked / totalDuration * 360);
     }
 
-    public override void Interact(GameObject player)
+    public override void InteractBehaviour(GameObject player)
     {
         interactUI.SetActive(false);
         unlockInterface.SetActive(true);

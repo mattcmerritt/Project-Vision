@@ -8,7 +8,7 @@ public class Door : InteractableElement
     [SerializeField] private Door connectedDoor;
     [SerializeField] private Vector3 targetLocation;
 
-    public override void Interact(GameObject player)
+    public override void InteractBehaviour(GameObject player)
     {
         player.transform.position = connectedDoor.targetLocation;
     }

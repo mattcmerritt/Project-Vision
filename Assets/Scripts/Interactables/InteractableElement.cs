@@ -6,7 +6,27 @@ public abstract class InteractableElement : MonoBehaviour
 {
     [SerializeField] protected GameObject interactUI;
 
-    public abstract void Interact(GameObject player);
+    [SerializeField] private bool isLocked;
+    public bool IsLocked 
+    {
+        get { return isLocked; } 
+        set { isLocked = value; } 
+    }
+
+    public void Interact(GameObject player)
+    {
+        if (IsLocked)
+        {
+            Debug.Log("Could not use, locked");
+            return;
+        }
+        else
+        {
+            InteractBehaviour(player);
+        }
+    }
+
+    public abstract void InteractBehaviour(GameObject player);
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {

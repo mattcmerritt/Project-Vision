@@ -6,7 +6,7 @@ public class Cover : InteractableElement
 {
     [SerializeField] private GameObject revealInterface;
 
-    public override void Interact(GameObject player)
+    public override void InteractBehaviour(GameObject player)
     {
         interactUI.SetActive(false);
         revealInterface.SetActive(true);

@@ -7,9 +7,9 @@ public class Documents : Collectible
     [SerializeField] private string nextLevelScene;
     [SerializeField] private float sceneTransitionDelay;
 
-    public override void Interact(GameObject player)
+    public override void InteractBehaviour(GameObject player)
     {
-        base.Interact(player);
+        base.InteractBehaviour(player);
 
         // TODO: play some sort of post mission briefing here
 

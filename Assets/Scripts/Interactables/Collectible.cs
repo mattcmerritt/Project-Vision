@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Collectible : InteractableElement
 {
-    public override void Interact(GameObject player)
+    public override void InteractBehaviour(GameObject player)
     {
         gameObject.SetActive(false);
     }
