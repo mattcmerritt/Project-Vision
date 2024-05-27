@@ -9,7 +9,7 @@ public class Waypoint : MonoBehaviour
     private Enemy parent;
 
     // Reference for the object that causes the enemy to walk to this point
-    [SerializeField] private EventObject triggerObject;
+    [SerializeField] private InteractableElement triggerObject;
 
     // The object's true world position
     private Vector3 trueLocation;

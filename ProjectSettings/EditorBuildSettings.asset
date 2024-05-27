@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Enemy Demo.unity
     guid: 1e1cac5299de3b6468b24718c1d28e71
+  - enabled: 1
+    path: Assets/Scenes/Interaction Demo.unity
+    guid: 50410bbde86bf85479ef83301c52aa69
   m_configObjects: {}
