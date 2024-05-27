@@ -55,6 +55,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadNextLevel(string sceneName, float delay)
+    {
+        StartCoroutine(LoadNextLevelCoroutine(sceneName, delay));
+    }
+
+    public IEnumerator LoadNextLevelCoroutine(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void FailAndRestartLevel()
     {
         StartCoroutine(FailAndRestartLevelCoroutine());
